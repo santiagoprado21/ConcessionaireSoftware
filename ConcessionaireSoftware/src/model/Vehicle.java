@@ -31,7 +31,11 @@ public class Vehicle {
 		this.typeVehicle = typeVehicle;
 	}
 	
-
+	/**
+	* @deprecated Metodo usado para anadir a un vehiculo el documento creado
+	* @param price precio del documento
+	* @param year fecha del documento
+	*/
 
 	public boolean addDocument(double price,Date year){
 
@@ -134,6 +138,10 @@ public class Vehicle {
 		this.typeVehicle = typeVehicle;
 	}
 	
+	/**
+	* @deprecated Metodo usado para obtener los documentos e imprimir el toString
+	*/
+	
 	public String showDocuments() {
 		String toReturn = "";
 		for (int j = 0; j <documentList.size(); j++) {
@@ -142,6 +150,11 @@ public class Vehicle {
 		return toReturn;
 		
 	}
+	
+	
+	/**
+	* @deprecated Metodo usado para definir un tipo de documento
+	*/
 	
 	public String typeDocument() {
 		

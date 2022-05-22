@@ -5,7 +5,7 @@ public class Parking {
 	private boolean ocuppy;
 	private Vehicle vehicleIn;
 	
-	public Parking(boolean ocuppy) {
+	public Parking(boolean ocuppy,Vehicle vehicleIn) {
 		
 		this.ocuppy = ocuppy;
 		this.vehicleIn = vehicleIn;

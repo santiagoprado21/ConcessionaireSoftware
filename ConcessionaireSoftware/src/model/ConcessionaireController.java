@@ -6,13 +6,13 @@ public class ConcessionaireController {
 
 	private ArrayList<Vehicle> vehicles;
 
-	private Parking[][] arrayParking;
+	private Parking[][] matrixParking;
 
 	public ConcessionaireController() {
 
 		this.vehicles = new ArrayList<Vehicle>();
 
-		Parking[][] matrixParking = new Parking[10][5];
+		matrixParking = new Parking[10][5];
 	}
 	
 	/**
@@ -37,6 +37,8 @@ public class ConcessionaireController {
 
 		Motocycle myMotocycle = new Motocycle(basePrice, sellPrice, brand, model, cilyndryCapacity, km, newOrUsed,
 				licensePlate, haveSoat, typeMoto, capacity, typeVehicle);
+		
+		registerVehicleBoolean(myMotocycle);
 
 		return vehicles.add(myMotocycle);
 	}
@@ -67,6 +69,7 @@ public class ConcessionaireController {
 		GasolineCar myGasolineCar = new GasolineCar(basePrice, sellPrice, brand, model, cilyndryCapacity, km, newOrUsed,
 				licensePlate, haveSoat, type, doorsNumber, windows, capacity, gasolineType, typeVehicle);
 
+		registerVehicleBoolean(myGasolineCar);
 		return vehicles.add(myGasolineCar);
 	}
 	
@@ -96,6 +99,7 @@ public class ConcessionaireController {
 		ElectricCar myElectricCar = new ElectricCar(basePrice, sellPrice, brand, model, cilyndryCapacity, km, newOrUsed,
 				licensePlate, haveSoat, type, doorsNumber, windows, typeCharger, duration, typeVehicle);
 
+		registerVehicleBoolean(myElectricCar);
 		return vehicles.add(myElectricCar);
 
 	}
@@ -130,6 +134,7 @@ public class ConcessionaireController {
 				licensePlate, haveSoat, type, doorsNumber, windows, capacityHybrid, gasolineType, typeChargerHybrid,
 				durationHybrid, typeVehicle);
 
+		registerVehicleBoolean(myHybridCar);
 		return vehicles.add(myHybridCar);
 	}
 	
@@ -270,7 +275,7 @@ public class ConcessionaireController {
 
 		for (int i = 0; i < vehicles.size(); i++) {
 			
-			if(licensePlate == vehicles.get(i).getLicensePlate()) {
+			if(licensePlate.equals(vehicles.get(i).getLicensePlate())) {
 				
 				out = vehicles.get(i).showDocuments();
 			}
@@ -409,18 +414,85 @@ public class ConcessionaireController {
 		return info;
 	}
 	
-	//public void registerInParking() {
-		
-		
-		//for(int i=0;i<arrayParking.length;i++) {
-			//for(int j=0;j<arrayParking.length;j++) {
-				
-				//arrayParking myParking = new Parking(occupy);
-			//}
-			
-			
-		//}
-	//}
+	/**
+	* @deprecated Metodo usado para llenar la matriz de false 
+	*/
 	
+	public void fillMatrix() {
+		
+		
+		for(int i=0;i<10;i++) {
+			for(int j=0;j<5;j++) {
+
+				
+				matrixParking[i][j] = new Parking(false,null);
+	
+			}
+			
+		}
+	}
+	
+	/**
+	* @deprecated Metodo usado para cambiar el false por el true cada que se anade un vehiculo
+	* @param vehicleIn se le pasa un vehiculo cada vez que re realiza un registro
+	*/
+	
+	public boolean registerVehicleBoolean(Vehicle vehicleIn) {
+		
+		boolean vehicleAdd = false;
+		for(int i=0;i<10;i++) {
+			for(int j=0;j<5;j++) {
+				
+				if(!matrixParking[i][j].isOcuppy() && !vehicleAdd) {
+					
+					matrixParking[i][j].setOcuppy(true);
+					
+					matrixParking[i][j].setVehicleIn(vehicleIn);
+			
+					vehicleAdd = true;
+				}
+			}
+			
+		}
+		
+		return vehicleAdd;
+	}
+	
+	/**
+	* @deprecated Metodo usado para crear una matriz de tipo boolean y cada vez que este ocupada la posicion ponerlo true
+	*/
+	
+	public String printMatrix() {
+		
+		boolean[][] matrixOcuppy = new boolean[10][5];
+		
+		for(int i=0;i<10;i++) {
+			for(int j=0;j<5;j++) {
+				
+				if(matrixParking[i][j].isOcuppy()) {
+					
+					matrixOcuppy[i][j] = true;
+				}
+			}
+		}
+		
+		return printImage(matrixOcuppy);
+	}
+	
+	/**
+	* @deprecated Metodo usado para mostrar la matriz boolean
+	* @param matrixOcuppy  matrix boolean 
+	*/
+	
+	private String printImage(boolean[][]matrixOcuppy) {
+		String print = "";
+		for (int i = 0; i <10; i++) {
+			for (int j = 0; j < 5; j++) {
+				print += matrixOcuppy[i][j] + " ";
+			}
+			print += "\n";
+		}
+		return print;
+	}
 	
 }

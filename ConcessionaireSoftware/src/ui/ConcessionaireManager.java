@@ -34,6 +34,7 @@ public class ConcessionaireManager {
 	public static void init() {
 		sc = new Scanner(System.in);
 		controller = new ConcessionaireController();
+		controller.fillMatrix();
 	}
 	
 	/**
@@ -45,7 +46,7 @@ public class ConcessionaireManager {
 		int option = 0;
 
 		System.out.println("Please pick an option\n" + "(1) Register a vehicle" + "\n(2) Register a Document"
-				+ "\n(3) Show Documents" + "\n(4) Show total price vehicle" + "\nShow infor of vehicles");
+				+ "\n(3) Show Documents" + "\n(4) Show total price vehicle" + "\n(5) Show infor of vehicles");
 		option = sc.nextInt();
 		sc.nextLine();
 		return option;
@@ -76,6 +77,9 @@ public class ConcessionaireManager {
 		case 5:
 			showInfoManager();
 			break;
+			
+		case 6:
+			System.out.println(controller.printMatrix());
 
 		default:
 			System.out.println("Error, type a valid option");

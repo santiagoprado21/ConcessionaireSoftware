@@ -27,6 +27,10 @@ public class Document {
 		 
 	}
 	
+	/**
+	* @deprecated Metodo usado para recorer la matriz en L 
+	*/
+	
 	public String generateCode() {
 		
 		String msg = "";
@@ -42,7 +46,9 @@ public class Document {
 		return msg;
 	}
 	
-	
+	/**
+	* @deprecated Metodo usado para imprimir la matriz
+	*/
 
 	private String printImage(int[][] image) {
 		String print = "";
@@ -83,6 +89,10 @@ public class Document {
 		
 		return msg;
 	}
+	
+	/**
+	* @deprecated Metodo usado para inicializar la matriz con tamano 4x4
+	*/
 	
 	public int[][] generateMatrix() {
 
