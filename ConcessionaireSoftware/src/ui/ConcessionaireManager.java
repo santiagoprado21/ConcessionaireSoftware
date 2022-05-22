@@ -26,27 +26,28 @@ public class ConcessionaireManager {
 		} while (option != 0);
 
 	}
-	
+
 	/**
-	* @deprecated Metodo usado para inicializar el escaner y la controladora
-	*/
+	 * @deprecated Metodo usado para inicializar el escaner y la controladora
+	 */
 
 	public static void init() {
 		sc = new Scanner(System.in);
 		controller = new ConcessionaireController();
 		controller.fillMatrix();
 	}
-	
-	/**
-	* @deprecated Metodo usado para crear un menu
 
-	*/
+	/**
+	 * @deprecated Metodo usado para crear un menu
+	 * 
+	 */
 
 	public static int showMenu() {
 		int option = 0;
 
 		System.out.println("Please pick an option\n" + "(1) Register a vehicle" + "\n(2) Register a Document"
-				+ "\n(3) Show Documents" + "\n(4) Show total price vehicle" + "\n(5) Show infor of vehicles");
+				+ "\n(3) Show Documents" + "\n(4) Show total price vehicle" + "\n(5) Show infor of vehicles"
+				+ "\n(6) Show matrix parking");
 		option = sc.nextInt();
 		sc.nextLine();
 		return option;
@@ -77,7 +78,7 @@ public class ConcessionaireManager {
 		case 5:
 			showInfoManager();
 			break;
-			
+
 		case 6:
 			System.out.println(controller.printMatrix());
 
@@ -87,10 +88,10 @@ public class ConcessionaireManager {
 		}
 
 	}
-	
+
 	/**
-	* @deprecated Metodo usado para registrar un vehiculo
-	*/
+	 * @deprecated Metodo usado para registrar un vehiculo
+	 */
 
 	public static void registerVehicle() {
 
@@ -149,14 +150,14 @@ public class ConcessionaireManager {
 		System.out.println("Your vehicle is:/n1.Car /n2.Motocycle");
 		int typeOption = sc.nextInt();
 		boolean typeVehicle = false;
-		if(typeOption ==1 ) {
-			
+		if (typeOption == 1) {
+
 			typeVehicle = true;
 		} else {
-			
+
 			typeVehicle = false;
 		}
-		
+
 		sc.nextLine();
 		switch (typeOption) {
 
@@ -232,7 +233,7 @@ public class ConcessionaireManager {
 				TypeGasoline typeGasoline = TypeGasoline.valueOf(typeGasolineString);
 
 				if (controller.registerGasolineCar(basePrice, sellPrice, brand, model, cilyndryCapacity, km, newOrUsed,
-						licensePlate, haveSoat, type, doorsNumber, windows, capacity, typeGasoline,typeVehicle)) {
+						licensePlate, haveSoat, type, doorsNumber, windows, capacity, typeGasoline, typeVehicle)) {
 
 					System.out.println("Your gasoline car is succesfully registered");
 				} else {
@@ -266,7 +267,7 @@ public class ConcessionaireManager {
 				double duration = sc.nextDouble();
 
 				if (controller.registerElectricCar(basePrice, sellPrice, brand, model, cilyndryCapacity, km, newOrUsed,
-						licensePlate, haveSoat, type, doorsNumber, windows, typeCharger, duration,typeVehicle)) {
+						licensePlate, haveSoat, type, doorsNumber, windows, typeCharger, duration, typeVehicle)) {
 
 					System.out.println("Electric car registered succesfully");
 
@@ -325,7 +326,7 @@ public class ConcessionaireManager {
 
 				if (controller.registerHybridCar(basePrice, sellPrice, brand, model, cilyndryCapacity, km, newOrUsed,
 						licensePlate, haveSoat, type, doorsNumber, windows, capacityHybrid, gasolineType,
-						typeChargerHybrid, durationHybrid,typeVehicle)) {
+						typeChargerHybrid, durationHybrid, typeVehicle)) {
 
 					System.out.println("Hybrid car registered succesfully");
 
@@ -374,7 +375,7 @@ public class ConcessionaireManager {
 			double capacity = sc.nextDouble();
 
 			if (controller.registerMotocycle(basePrice, sellPrice, brand, model, cilyndryCapacity, km, newOrUsed,
-					licensePlate, haveSoat, typeMoto, capacity,typeVehicle)) {
+					licensePlate, haveSoat, typeMoto, capacity, typeVehicle)) {
 
 				System.out.println("Motocycle registered succesfully");
 
@@ -387,10 +388,10 @@ public class ConcessionaireManager {
 		}
 
 	}
-	
+
 	/**
-	* @deprecated Metodo usado para registrar un documento 
-	*/
+	 * @deprecated Metodo usado para registrar un documento
+	 */
 
 	public static void registerDocument() {
 
@@ -458,10 +459,11 @@ public class ConcessionaireManager {
 			System.out.println("Document cant be registered");
 		}
 	}
-	
+
 	/**
-	* @deprecated Metodo usado para mostrar el precio final de un vehiculo en especifico
-	*/
+	 * @deprecated Metodo usado para mostrar el precio final de un vehiculo en
+	 *             especifico
+	 */
 
 	public static void totalPriceVehicle() {
 
@@ -482,10 +484,11 @@ public class ConcessionaireManager {
 		System.out.println("Total Price: \n" + controller.showTotalPrice(vehicleBrand, vehicleModel));
 
 	}
-	
+
 	/**
-	* @deprecated Metodo usado para mostrar informes de vehiculos segun interes del usuario
-	*/
+	 * @deprecated Metodo usado para mostrar informes de vehiculos segun interes del
+	 *             usuario
+	 */
 
 	public static void showInfoManager() {
 
@@ -494,7 +497,7 @@ public class ConcessionaireManager {
 		int desitionInfo = sc.nextInt();
 		boolean typeOfVehicle = false;
 		boolean newOrUsed = false;
-		
+
 		switch (desitionInfo) {
 		case 1:
 			System.out.println("What type is the vehicle" + "\n(1) Car" + "\n(2) Motocycle");
@@ -507,7 +510,7 @@ public class ConcessionaireManager {
 				typeOfVehicle = false;
 				break;
 			}
-			
+
 			System.out.println(controller.showInfo(typeOfVehicle, null, newOrUsed));
 
 			break;
@@ -516,7 +519,7 @@ public class ConcessionaireManager {
 			String typeGasoline = sc.nextLine();
 			sc.nextLine();
 			switch (Integer.valueOf(typeGasoline)) {
-			
+
 			case 1:
 
 				typeGasoline = "REGULAR";
@@ -532,12 +535,12 @@ public class ConcessionaireManager {
 				typeGasoline = "DIESEL";
 				break;
 			}
-			
+
 			TypeGasoline gasolineType = TypeGasoline.valueOf(typeGasoline);
-			
+
 			System.out.println(controller.showInfo(typeOfVehicle, gasolineType, newOrUsed));
-				
-			break;	
+
+			break;
 
 		case 3:
 
@@ -551,28 +554,25 @@ public class ConcessionaireManager {
 				newOrUsed = false;
 				break;
 			}
-			
+
 			System.out.println(controller.showInfo(typeOfVehicle, null, newOrUsed));
-			
+
 			break;
 		}
-		
-		
-				
+
 	}
-	
+
 	/**
-	* @deprecated Metodo usado para mostrar ek codigo del soat
-	*/
-	
+	 * @deprecated Metodo usado para mostrar ek codigo del soat
+	 */
+
 	public static void showCodes() {
-		
+
 		System.out.println("Type the license plate of the vehicle");
 		String licensePlate = sc.nextLine();
-		
+
 		System.out.println(controller.showDocuments(licensePlate));
-		
-		
+
 	}
 
 }
